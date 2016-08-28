@@ -12,7 +12,6 @@ library(shiny)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
    
-  
   brachSelection= reactive({input$Chars})
   LegendYesNO = reactive({input$OptLegend})
   ColSel = reactive({input$ColSelection})
@@ -238,5 +237,26 @@ shinyServer(function(input, output) {
       layout(title="Central CANADA Cat 2 Claims 2016")
     
   })
-  
+  ####################################### RMA charts ####################################
+  output$RMALineChartRegion<-renderPlotly({
+    
+    Plot2015=subdf2015 %>%
+      group_by(CreatedMonth) %>%
+      filter(District== input$ChooseDistrict)%>%
+      mutate(RMAPer = sum(RMAReceived)/sum(ReturnDelReq=="YES")) %>%
+      summarise(RMAAvgPer=mean(RMAPer))
+    Plot2016=subdf2016 %>%
+      group_by(CreatedMonth) %>%
+      filter(District== input$ChooseDistrict)%>%
+      mutate(RMAPer = sum(RMAReceived)/sum(ReturnDelReq=="YES")) %>%
+      summarise(RMAAvgPer=mean(RMAPer))
+      plot_ly(x = Plot2015$CreatedMonth ,y = round(Plot2015$RMAAvgPer*100,2),name ="2015 Actual",line = list(shape = "spline")) %>%
+        add_trace(x = Plot2015$CreatedMonth ,y = round(Plot2015$RMAAvgPer*100,2),showlegend=FALSE,text=paste0(round(Plot2015$RMAAvgPer*100,2),"%"), mode="text",textposition = "top left") %>%
+      add_trace(x = Plot2016$CreatedMonth ,y = round(Plot2016$RMAAvgPer*100,2),name="2016 Actual", line = list(shape = "spline")) %>%
+      add_trace(x = Plot2016$CreatedMonth ,y = round(Plot2016$RMAAvgPer*100,2),showlegend=FALSE,text=paste0(round(Plot2016$RMAAvgPer*100,2),"%"), mode="text",textposition = "top left") %>%
+      layout(xaxis=x,yaxis=list(title = "Percentage", titlefont = f))%>%
+      layout(title="RMA Claims success percentage")
+
+  })
+   
 })

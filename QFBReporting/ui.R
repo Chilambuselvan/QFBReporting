@@ -7,7 +7,7 @@
 # please Contact e.chilambuselvan@kone.com / +919600093567
 #
 
-#install.packages("devtools")
+
 library(shiny)
 library(leaflet)
 library(plotly)
@@ -17,6 +17,7 @@ library(data.table)
 library(googleVis)
 library(ggmap)
 library(lubridate)
+
 #devtools::install_github("rstudio/addinexamples", type = "source")
 
 myvar=0
@@ -32,6 +33,9 @@ if (myvar==1){
   ENAMasterSource$CreatedMonth=month(as.POSIXlt(ENAMasterSource$Created_on, format="%Y-%m-%d"))
   ENAMasterSource$ConvertedSLtoFL <- ifelse(ENAMasterSource$Category=="Cat1 Material Request SL responsibility" & ENAMasterSource$FB_Responsibility=="Front Line Responsibility", 1, 0)
   ENAMasterSource$ConvertedFLtoSL<- ifelse(ENAMasterSource$Category=="Cat2 Material Request FL responsibility" & ENAMasterSource$FB_Responsibility=="Supply Line Responsibility", 1, 0)
+  RMASearchstr <- c("NOT", "EXPIRED")
+  RMASearchstr<-as.data.frame(t(RMASearchstr))
+  ENAMasterSource$RMAReceived=as.integer(grepl(paste(RMASearchstr, collapse = "|"), ENAMasterSource$`Ret_Del'y_Nr`))
 }
 
 #filteredData = subset(COR_EFRMaster,COR_EFRMaster$Branches=="Las Vegas")
@@ -47,6 +51,7 @@ varsYN = c(TRUE,FALSE)
 VarCol = colnames(COR_EFRMaster)
 CatSel= unique(ENAMasterSource$FB_Responsibility)
 YearSel = unique(ENAMasterSource$Created_on_year)
+RegionSel=unique(ENAMasterSource$District)
 MonSel = month.abb[unique(ENAMasterSource$CreatedMonth)]
 #match("Jan",month.abb)
 # Define UI for application that draws a histogram
@@ -105,13 +110,7 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                     ),
                     tabPanel(title = "Canada Report",
                              fluidRow(
-                               column(3,selectInput(inputId = "yearChooseCanReport","Choose Year",YearSel,multiple = FALSE)),
-                               column(3,selectInput(inputId = "MonthChooseCanReport","Choose Month",MonSel,multiple = FALSE))
-                               #column(3,selectInput(inputId = "ColSelection","Choose Columns",VarCol,multiple = TRUE))
-                             ),
-                             fluidRow(
-                               #column(2,"Saml"),
-                               column(6,
+                              column(6,
                                       fluidRow(plotlyOutput("LineChartCanada")),
                                       fluidRow(plotlyOutput("LineChartEastCanada"))
                                ),
@@ -121,7 +120,27 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                                )
                              )
                              
+                    ),
+                    tabPanel(title = "RMA Report",
+                             fluidRow(
+                                column(3,selectInput(inputId = "ChooseDistrict","Choose District",RegionSel,multiple = FALSE))
+                                #column(3,selectInput(inputId = "MonthChooseCanReport","Choose Month",MonSel,multiple = FALSE))
+                             
+                             ),
+                             fluidRow(
+                               #column(2,"Saml"),
+                               column(12,
+                                      fluidRow(plotlyOutput("RMALineChartRegion"))
+                                      
+                               )
+                              # column(12,
+                              #        fluidRow(plotlyOutput("RMALineChartDistrict"))
+                                      
+                               #)
+                             )
+                             
                     )
+                    
                   )
   
 
