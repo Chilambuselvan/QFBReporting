@@ -1,0 +1,416 @@
+Branch,Region,District,BranchDesc,lon,lat
+CA11,Canada,Eastern Canada,Halifax,-63.5753196,44.6488625
+CA12,Canada,Eastern Canada,New Foundland,-52.71283,47.560539
+CA13,Canada,Eastern Canada,New Brunswick,-74.4518188,40.4862157
+CA21,Canada,Eastern Canada,Quebec,-73.5491361,52.9399159
+CA22,Canada,Eastern Canada,Sherbrooke,-71.8824288,45.4009928
+CA25,Canada,Eastern Canada,Montreal,-73.567256,45.5016889
+CA31,Canada,Central Canada,Ottawa,-75.6971931,45.4215296
+CA32,Canada,Central Canada,Kingston,-76.4859544,44.2311717
+CA34,Canada,Central Canada,Toronto,-79.3831843,43.653226
+CA36,Canada,Central Canada,Hamilton,-84.5613355,39.3995008
+CA39,Canada,Western Canada,Thunder Bay,-89.2476823,48.3808951
+CA41,Canada,Western Canada,Winnipeg,-97.1374937,49.8997541
+CA42,Canada,Western Canada,Regina,-104.6188944,50.4452112
+CA43,Canada,Western Canada,Edmonton,-113.4909267,53.544389
+CA44,Canada,Western Canada,Calgary,-114.0708459,51.0486151
+CA45,Canada,Western Canada,Kelowna,-119.4960106,49.8879519
+CA46,Canada,Western Canada,Vancouver,-122.6614861,45.6387281
+CA48,Canada,Western Canada,Victoria,-97.0035982,28.8052674
+US020,North,North Central,Chicago,-87.6297982,41.8781136
+US020M,North,North Central,Chicago,-87.6297982,41.8781136
+US023,North,North Central,Chicago,-87.6297982,41.8781136
+US023M,North,North Central,Chicago,-87.6297982,41.8781136
+US024,North,North Central,Milwaukee,-87.9064736,43.0389025
+US024M,North,North Central,Milwaukee,-87.9064736,43.0389025
+US030,North,Great Plains,Kansas City,-94.5785667,39.0997265
+US030M,North,Great Plains,Kansas City,-94.5785667,39.0997265
+US031,North,Great Plains,Kansas City,-94.5785667,39.0997265
+US031M,North,Great Plains,Kansas City,-94.5785667,39.0997265
+US032,North,Great Plains,St. Louis,-90.1994042,38.6270025
+US032M,North,Great Plains,St. Louis,-90.1994042,38.6270025
+US033,North,Great Plains,Springfield,-93.2922989,37.2089572
+US033M,North,Great Plains,Springfield,-93.2922989,37.2089572
+US034,North,Great Plains,Kansas City,-94.5785667,39.0997265
+US034M,North,Great Plains,Kansas City,-94.5785667,39.0997265
+US036,North,Great Plains,Springfield,-93.2922989,37.2089572
+US036M,North,Great Plains,Springfield,-93.2922989,37.2089572
+US040,North,North Central,Peoria,-112.2373779,33.5805955
+US040M,North,North Central,Peoria,-112.2373779,33.5805955
+US041,North,North Central,Central Illinois,-87.6235719,41.8802802
+US041M,North,North Central,Central Illinois,-87.6235719,41.8802802
+US042,North,North Central,Peoria,-112.2373779,33.5805955
+US042M,North,North Central,Peoria,-112.2373779,33.5805955
+US043,North,North Central,Peoria,-112.2373779,33.5805955
+US043M,North,North Central,Peoria,-112.2373779,33.5805955
+US044,North,North Central,Peoria,-112.2373779,33.5805955
+US044M,North,North Central,Peoria,-112.2373779,33.5805955
+US045,North,North Central,Peoria,-112.2373779,33.5805955
+US045M,North,North Central,Peoria,-112.2373779,33.5805955
+US047,North,North Central,Peoria,-112.2373779,33.5805955
+US047M,North,North Central,Peoria,-112.2373779,33.5805955
+US048,North,North Central,Central Illinois,-87.6235719,41.8802802
+US048M,North,North Central,Central Illinois,-87.6235719,41.8802802
+US050,West,Mountain West,Portland,-122.6764816,45.5230622
+US050M,West,Mountain West,Portland,-122.6764816,45.5230622
+US051,West,Mountain West,Portland,-122.6764816,45.5230622
+US051M,West,Mountain West,Portland,-122.6764816,45.5230622
+US060,North,Great Plains,Quad Cities,-90.57763669,41.5236437
+US060M,North,Great Plains,Quad Cities,-90.57763669,41.5236437
+US062,North,Great Plains,Sterling,-77.4291298,39.0066993
+US062M,North,Great Plains,Sterling,-77.4291298,39.0066993
+US070,West,Mountain West,Seattle,-122.3320708,47.6062095
+US070M,West,Mountain West,Seattle,-122.3320708,47.6062095
+US071,West,Mountain West,Seattle,-122.3320708,47.6062095
+US071M,West,Mountain West,Seattle,-122.3320708,47.6062095
+US072,West,Mountain West,Seattle,-122.3320708,47.6062095
+US072M,West,Mountain West,Seattle,-122.3320708,47.6062095
+US073,West,Mountain West,Seattle,-122.3320708,47.6062095
+US073M,West,Mountain West,Seattle,-122.3320708,47.6062095
+US080,North,Great Plains,Wichita,-97.330053,37.6871761
+US080M,North,Great Plains,Wichita,-97.330053,37.6871761
+US081,North,Great Plains,Wichita,-97.330053,37.6871761
+US081M,North,Great Plains,Wichita,-97.330053,37.6871761
+US082,North,Great Plains,Wichita,-97.330053,37.6871761
+US082M,North,Great Plains,Wichita,-97.330053,37.6871761
+US083,North,Great Plains,Wichita,-97.330053,37.6871761
+US083M,North,Great Plains,Wichita,-97.330053,37.6871761
+US084,North,Great Plains,Wichita,-97.330053,37.6871761
+US084M,North,Great Plains,Wichita,-97.330053,37.6871761
+US090,South,Southeast,Jacksonville,-81.655651,30.3321838
+US090M,South,Southeast,Jacksonville,-81.655651,30.3321838
+US091,South,Southeast,Charlotte,-80.8431267,35.2270869
+US091M,South,Southeast,Charlotte,-80.8431267,35.2270869
+US092,South,Southeast,Jacksonville,-81.655651,30.3321838
+US092M,South,Southeast,Jacksonville,-81.655651,30.3321838
+US093,South,Southeast,Jacksonville,-81.655651,30.3321838
+US093M,South,Southeast,Jacksonville,-81.655651,30.3321838
+US097,South,Southeast,Jacksonville,-81.655651,30.3321838
+US097M,South,Southeast,Jacksonville,-81.655651,30.3321838
+US100,South,South Central,San Antonio,-98.4936282,29.4241219
+US100M,South,South Central,San Antonio,-98.4936282,29.4241219
+US101,South,South Central,San Antonio,-98.4936282,29.4241219
+US101M,South,South Central,San Antonio,-98.4936282,29.4241219
+US110,West,Mountain West,Denver,-104.990251,39.7392358
+US110M,West,Mountain West,Denver,-104.990251,39.7392358
+US111,West,Mountain West,Denver,-104.990251,39.7392358
+US111M,West,Mountain West,Denver,-104.990251,39.7392358
+US112,West,Mountain West,Denver,-104.990251,39.7392358
+US112M,West,Mountain West,Denver,-104.990251,39.7392358
+US113,West,Mountain West,Denver,-104.990251,39.7392358
+US113M,West,Mountain West,Denver,-104.990251,39.7392358
+US114,West,Mountain West,Denver,-104.990251,39.7392358
+US114M,West,Mountain West,Denver,-104.990251,39.7392358
+US118,West,Mountain West,Denver,-104.990251,39.7392358
+US118M,West,Mountain West,Denver,-104.990251,39.7392358
+US120,North,Central,Cleveland,-81.6943605,41.49932
+US120M,North,Central,Cleveland,-81.6943605,41.49932
+US121,North,Central,Cleveland,-81.6943605,41.49932
+US121M,North,Central,Cleveland,-81.6943605,41.49932
+US130,West,Pacific Southwest,San Diego,-117.1610838,32.715738
+US130M,West,Pacific Southwest,San Diego,-117.1610838,32.715738
+US140,South,Southeast,Atlanta,-84.3879824,33.7489954
+US140M,South,Southeast,Atlanta,-84.3879824,33.7489954
+US141,South,Southeast,Atlanta,-84.3879824,33.7489954
+US141M,South,Southeast,Atlanta,-84.3879824,33.7489954
+US142,South,Southeast,Atlanta,-84.3879824,33.7489954
+US142M,South,Southeast,Atlanta,-84.3879824,33.7489954
+US143,South,Southeast,Atlanta,-84.3879824,33.7489954
+US143M,South,Southeast,Atlanta,-84.3879824,33.7489954
+US145,South,Southeast,Atlanta,-84.3879824,33.7489954
+US145M,South,Southeast,Atlanta,-84.3879824,33.7489954
+US150,South,South Central,Mobile,-88.0398912,30.6953657
+US150M,South,South Central,Mobile,-88.0398912,30.6953657
+US151,South,South Central,New Orleans,-90.0715323,29.9510658
+US151,South,South Central,New Orleans,-90.0715323,29.9510658
+US151M,South,South Central,New Orleans,-90.0715323,29.9510658
+US151M,South,South Central,New Orleans,-90.0715323,29.9510658
+US152,South,South Central,Mobile,-88.0398912,30.6953657
+US152M,South,South Central,Mobile,-88.0398912,30.6953657
+US154,South,South Central,New Orleans,-90.0715323,29.9510658
+US154M,South,South Central,New Orleans,-90.0715323,29.9510658
+US156,South,South Central,Mobile,-88.0398912,30.6953657
+US156M,South,South Central,Mobile,-88.0398912,30.6953657
+US158,South,South Central,Mobile,-88.0398912,30.6953657
+US158M,South,South Central,Mobile,-88.0398912,30.6953657
+US160,North,New England,Boston,-71.0588801,42.3600825
+US160M,North,New England,Boston,-71.0588801,42.3600825
+US161,North,New England,Boston,-71.0588801,42.3600825
+US161M,North,New England,Boston,-71.0588801,42.3600825
+US162,North,New England,Boston,-71.0588801,42.3600825
+US162M,North,New England,Boston,-71.0588801,42.3600825
+US163,North,New England,Boston,-71.0588801,42.3600825
+US163M,North,New England,Boston,-71.0588801,42.3600825
+US164,North,New England,Boston,-71.0588801,42.3600825
+US164M,North,New England,Boston,-71.0588801,42.3600825
+US165,North,New England,Boston,-71.0588801,42.3600825
+US165M,North,New England,Boston,-71.0588801,42.3600825
+US170,South,South Central,Oklahoma,-97.092877,35.0077519
+US170M,South,South Central,Oklahoma,-97.092877,35.0077519
+US172,South,South Central,Oklahoma,-97.092877,35.0077519
+US172M,South,South Central,Oklahoma,-97.092877,35.0077519
+US180,South,South Central,Tulsa,-95.992775,36.1539816
+US180M,South,South Central,Tulsa,-95.992775,36.1539816
+US190,North,Central,Detroit,-83.0457538,42.331427
+US190M,North,Central,Detroit,-83.0457538,42.331427
+US191,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US191M,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US193,North,Central,Detroit,-83.0457538,42.331427
+US193M,North,Central,Detroit,-83.0457538,42.331427
+US210,South,Southeast,Miami,-80.1917902,25.7616798
+US210M,South,Southeast,Miami,-80.1917902,25.7616798
+US211,South,Southeast,Miami,-80.1917902,25.7616798
+US211,South,Southeast,Miami,-80.1917902,25.7616798
+US211M,South,Southeast,Miami,-80.1917902,25.7616798
+US211M,South,Southeast,Miami,-80.1917902,25.7616798
+US212,South,Southeast,Miami,-80.1917902,25.7616798
+US212M,South,Southeast,Miami,-80.1917902,25.7616798
+US220,South,Mid-Atlantic,Washington D.C.,-77.0368707,38.9071923
+US220M,South,Mid-Atlantic,Washington D.C.,-77.0368707,38.9071923
+US222,South,Mid-Atlantic,Richmond,-77.4360481,37.5407246
+US222M,South,Mid-Atlantic,Richmond,-77.4360481,37.5407246
+US223,South,Mid-Atlantic,Richmond,-77.4360481,37.5407246
+US223M,South,Mid-Atlantic,Richmond,-77.4360481,37.5407246
+US225,South,Mid-Atlantic,Washington D.C.,-77.0368707,38.9071923
+US225M,South,Mid-Atlantic,Washington D.C.,-77.0368707,38.9071923
+US226,South,Mid-Atlantic,Washington D.C.,-77.0368707,38.9071923
+US226M,South,Mid-Atlantic,Washington D.C.,-77.0368707,38.9071923
+US228,North,Central,Cleveland,-81.6943605,41.49932
+US228M,North,Central,Cleveland,-81.6943605,41.49932
+US230,West,Mountain West,Salt Lake City,-111.8910474,40.7607793
+US230M,West,Mountain West,Salt Lake City,-111.8910474,40.7607793
+US231,West,Mountain West,Salt Lake City,-111.8910474,40.7607793
+US231M,West,Mountain West,Salt Lake City,-111.8910474,40.7607793
+US232,West,Mountain West,Salt Lake City,-111.8910474,40.7607793
+US232M,West,Mountain West,Salt Lake City,-111.8910474,40.7607793
+US240,West,Pacific Southwest,Los Angeles/OC/Riverside,-117.7641327,33.729881
+US240M,West,Pacific Southwest,Los Angeles/OC/Riverside,-117.7641327,33.729881
+US241,West,Pacific Southwest,Los Angeles/OC/Riverside,-117.7641327,33.729881
+US241M,West,Pacific Southwest,Los Angeles/OC/Riverside,-117.7641327,33.729881
+US260,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US260M,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US261,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US261M,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US262,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US262M,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US263,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US263M,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US264,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US264M,North,North Central,Grand Rapids,-85.6680863,42.9633599
+US270,South,Mid-Atlantic,Harrisburg,-76.8867008,40.2731911
+US270M,South,Mid-Atlantic,Harrisburg,-76.8867008,40.2731911
+US280,South,Southeast,Birmingham,-86.80249,33.5206608
+US280M,South,Southeast,Birmingham,-86.80249,33.5206608
+US290,South,South Central,New Orleans,-90.0715323,29.9510658
+US290M,South,South Central,New Orleans,-90.0715323,29.9510658
+US291,South,South Central,Baton Rouge,-91.1403196,30.4582829
+US291M,South,South Central,Baton Rouge,-91.1403196,30.4582829
+US292,South,South Central,Baton Rouge,-91.1403196,30.4582829
+US292M,South,South Central,Baton Rouge,-91.1403196,30.4582829
+US300,West,Pacific Southwest,Phoenix,-112.0740373,33.4483771
+US300M,West,Pacific Southwest,Phoenix,-112.0740373,33.4483771
+US301,West,Pacific Southwest,Tucson,-110.926479,32.2217429
+US301M,West,Pacific Southwest,Tucson,-110.926479,32.2217429
+US310,South,Southeast,Charlotte,-80.8431267,35.2270869
+US310M,South,Southeast,Charlotte,-80.8431267,35.2270869
+US311,South,Southeast,Charlotte,-80.8431267,35.2270869
+US311M,South,Southeast,Charlotte,-80.8431267,35.2270869
+US313,South,Southeast,Charlotte,-80.8431267,35.2270869
+US313M,South,Southeast,Charlotte,-80.8431267,35.2270869
+US314,South,Mid-Atlantic,Richmond,-77.4360481,37.5407246
+US314M,South,Mid-Atlantic,Richmond,-77.4360481,37.5407246
+US315,South,Southeast,Charlotte,-80.8431267,35.2270869
+US315M,South,Southeast,Charlotte,-80.8431267,35.2270869
+US320,West,Pacific Southwest,Las Vegas,-115.1728497,36.1147074
+US320M,West,Pacific Southwest,Las Vegas,-115.1728497,36.1147074
+US321,West,Pacific Southwest,Las Vegas,-115.1728497,36.1147074
+US321M,West,Pacific Southwest,Las Vegas,-115.1728497,36.1147074
+US330,North,Central,Memphis,-90.0489801,35.1495343
+US330M,North,Central,Memphis,-90.0489801,35.1495343
+US331,North,Central,Memphis,-90.0489801,35.1495343
+US331M,North,Central,Memphis,-90.0489801,35.1495343
+US340,North,Great Plains,Des Moines,-93.6091064,41.6005448
+US340M,North,Great Plains,Des Moines,-93.6091064,41.6005448
+US341,North,Great Plains,Des Moines,-93.6091064,41.6005448
+US341M,North,Great Plains,Des Moines,-93.6091064,41.6005448
+US350,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US350M,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US351,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US351M,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US352,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US352M,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US353,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US353M,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US355,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US355M,West,Mid-Pacific,Honolulu,-157.8583333,21.3069444
+US360,North,Great Plains,St. Louis,-90.1994042,38.6270025
+US360M,North,Great Plains,St. Louis,-90.1994042,38.6270025
+US370,South,South Central,Houston,-95.3698028,29.7604267
+US370M,South,South Central,Houston,-95.3698028,29.7604267
+US372,South,South Central,Houston,-95.3698028,29.7604267
+US372M,South,South Central,Houston,-95.3698028,29.7604267
+US374,South,South Central,Houston,-95.3698028,29.7604267
+US374M,South,South Central,Houston,-95.3698028,29.7604267
+US380,West,Mid-Pacific,Bay Area SF,-122.4194155,37.7749295
+US380M,West,Mid-Pacific,Bay Area SF,-122.4194155,37.7749295
+US381,West,Mid-Pacific,San Francisco,-122.4194155,37.7749295
+US381M,West,Mid-Pacific,San Francisco,-122.4194155,37.7749295
+US382,West,Mid-Pacific,Bay Area SF,-122.4194155,37.7749295
+US382M,West,Mid-Pacific,Bay Area SF,-122.4194155,37.7749295
+US383,West,Mid-Pacific,San Francisco,-122.4194155,37.7749295
+US383M,West,Mid-Pacific,San Francisco,-122.4194155,37.7749295
+US400,South,South Central,Dallas,-96.7969879,32.7766642
+US400M,South,South Central,Dallas,-96.7969879,32.7766642
+US401,South,South Central,Dallas,-96.7969879,32.7766642
+US401M,South,South Central,Dallas,-96.7969879,32.7766642
+US402,South,South Central,Dallas,-96.7969879,32.7766642
+US402M,South,South Central,Dallas,-96.7969879,32.7766642
+US403,South,South Central,Dallas,-96.7969879,32.7766642
+US403M,South,South Central,Dallas,-96.7969879,32.7766642
+US405,South,South Central,Dallas,-96.7969879,32.7766642
+US405M,South,South Central,Dallas,-96.7969879,32.7766642
+US406,South,South Central,Dallas,-96.7969879,32.7766642
+US406M,South,South Central,Dallas,-96.7969879,32.7766642
+US407,South,South Central,Dallas,-96.7969879,32.7766642
+US407M,South,South Central,Dallas,-96.7969879,32.7766642
+US410,North,Central,Knoxville,-83.9207392,35.9606384
+US410M,North,Central,Knoxville,-83.9207392,35.9606384
+US411,North,Central,Knoxville,-83.9207392,35.9606384
+US411M,North,Central,Knoxville,-83.9207392,35.9606384
+US412,North,Central,Nashville,-86.7816016,36.1626638
+US412M,North,Central,Nashville,-86.7816016,36.1626638
+US413,North,Central,Knoxville,-83.9207392,35.9606384
+US413M,North,Central,Knoxville,-83.9207392,35.9606384
+US414,North,Central,Nashville,-86.7816016,36.1626638
+US414M,North,Central,Nashville,-86.7816016,36.1626638
+US420,North,Central,Indianapolis,-86.158068,39.768403
+US420M,North,Central,Indianapolis,-86.158068,39.768403
+US421,North,Central,Indianapolis,-86.158068,39.768403
+US421M,North,Central,Indianapolis,-86.158068,39.768403
+US422,North,Central,Indianapolis,-86.158068,39.768403
+US422M,North,Central,Indianapolis,-86.158068,39.768403
+US423,North,Central,Indianapolis,-86.158068,39.768403
+US423M,North,Central,Indianapolis,-86.158068,39.768403
+US424,North,Central,Indianapolis,-86.158068,39.768403
+US424M,North,Central,Indianapolis,-86.158068,39.768403
+US430,North,Great Plains,Minneapolis,-93.2650108,44.977753
+US430M,North,Great Plains,Minneapolis,-93.2650108,44.977753
+US440,North,Central,Little Rock,-92.2895948,34.7464809
+US440M,North,Central,Little Rock,-92.2895948,34.7464809
+US442,South,South Central,Tulsa,-95.992775,36.1539816
+US442,South,South Central,Tulsa,-95.992775,36.1539816
+US442M,South,South Central,Tulsa,-95.992775,36.1539816
+US442M,South,South Central,Tulsa,-95.992775,36.1539816
+US450,North,Great Plains,Omaha,-95.9979883,41.2523634
+US450M,North,Great Plains,Omaha,-95.9979883,41.2523634
+US451,North,Great Plains,Omaha,-95.9979883,41.2523634
+US451M,North,Great Plains,Omaha,-95.9979883,41.2523634
+US460,West,Mountain West,Missoula,-113.996586,46.8787176
+US460M,West,Mountain West,Missoula,-113.996586,46.8787176
+US462,West,Mountain West,Missoula,-113.996586,46.8787176
+US462M,West,Mountain West,Missoula,-113.996586,46.8787176
+US463,West,Mountain West,Missoula,-113.996586,46.8787176
+US463M,West,Mountain West,Missoula,-113.996586,46.8787176
+US464,West,Mountain West,Missoula,-113.996586,46.8787176
+US464M,West,Mountain West,Missoula,-113.996586,46.8787176
+US465,West,Mountain West,Missoula,-113.996586,46.8787176
+US465M,West,Mountain West,Missoula,-113.996586,46.8787176
+US470,South,Southeast,Tampa,-82.4571776,27.950575
+US470M,South,Southeast,Tampa,-82.4571776,27.950575
+US472,South,Southeast,Tampa,-82.4571776,27.950575
+US472M,South,Southeast,Tampa,-82.4571776,27.950575
+US473,South,Southeast,Tampa,-82.4571776,27.950575
+US473M,South,Southeast,Tampa,-82.4571776,27.950575
+US480,North,Central,Cincinnati,-84.5120196,39.1031182
+US480M,North,Central,Cincinnati,-84.5120196,39.1031182
+US482,North,Central,Cincinnati,-84.5120196,39.1031182
+US482M,North,Central,Cincinnati,-84.5120196,39.1031182
+US490,West,Mid-Pacific,Sacramento,-121.4943996,38.5815719
+US490M,West,Mid-Pacific,Sacramento,-121.4943996,38.5815719
+US491,West,Mid-Pacific,Sacramento,-121.4943996,38.5815719
+US491M,West,Mid-Pacific,Sacramento,-121.4943996,38.5815719
+US492,West,Mid-Pacific,Sacramento,-121.4943996,38.5815719
+US492M,West,Mid-Pacific,Sacramento,-121.4943996,38.5815719
+US493,West,Mid-Pacific,Sacramento,-121.4943996,38.5815719
+US493M,West,Mid-Pacific,Sacramento,-121.4943996,38.5815719
+US500,North,Central,Louisville,-85.7584557,38.2526647
+US500M,North,Central,Louisville,-85.7584557,38.2526647
+US510,South,South Central,Austin,-97.7430608,30.267153
+US510M,South,South Central,Austin,-97.7430608,30.267153
+US511,South,South Central,Austin,-97.7430608,30.267153
+US511M,South,South Central,Austin,-97.7430608,30.267153
+US512,South,South Central,Austin,-97.7430608,30.267153
+US512M,South,South Central,Austin,-97.7430608,30.267153
+US520,South,Southeast,Naples,-81.7948103,26.1420358
+US520M,South,Southeast,Naples,-81.7948103,26.1420358
+US521,South,Southeast,Naples,-81.7948103,26.1420358
+US521M,South,Southeast,Naples,-81.7948103,26.1420358
+US550,South,Southeast,Orlando,-81.3792365,28.5383355
+US550M,South,Southeast,Orlando,-81.3792365,28.5383355
+US551,South,Southeast,Orlando,-81.3792365,28.5383355
+US551M,South,Southeast,Orlando,-81.3792365,28.5383355
+US552,South,Southeast,Orlando,-81.3792365,28.5383355
+US552M,South,Southeast,Orlando,-81.3792365,28.5383355
+US560,West,Pacific Southwest,Albuquerque,-106.6055534,35.0853336
+US560M,West,Pacific Southwest,Albuquerque,-106.6055534,35.0853336
+US561,West,Pacific Southwest,Albuquerque,-106.6055534,35.0853336
+US561M,West,Pacific Southwest,Albuquerque,-106.6055534,35.0853336
+US570,North,New England,Hartford,-72.6850932,41.7637111
+US570M,North,New England,Hartford,-72.6850932,41.7637111
+US571,North,New England,Hartford,-72.6850932,41.7637111
+US571M,North,New England,Hartford,-72.6850932,41.7637111
+US572,North,New England,Hartford,-72.6850932,41.7637111
+US572M,North,New England,Hartford,-72.6850932,41.7637111
+US573,North,New England,Albany,-73.7562317,42.6525793
+US573M,North,New England,Albany,-73.7562317,42.6525793
+US574,North,New England,Albany,-73.7562317,42.6525793
+US574M,North,New England,Albany,-73.7562317,42.6525793
+US575,North,New England,Albany,-73.7562317,42.6525793
+US575M,North,New England,Albany,-73.7562317,42.6525793
+US590,South,Mid-Atlantic,Philadelphia,-75.1652215,39.9525839
+US590M,South,Mid-Atlantic,Philadelphia,-75.1652215,39.9525839
+US591,South,Mid-Atlantic,Philadelphia,-75.1652215,39.9525839
+US591M,South,Mid-Atlantic,Philadelphia,-75.1652215,39.9525839
+US592,South,Mid-Atlantic,Philadelphia,-75.1652215,39.9525839
+US592M,South,Mid-Atlantic,Philadelphia,-75.1652215,39.9525839
+US610,North,Great Plains,Sioux Falls,-96.7311034,43.5445959
+US610M,North,Great Plains,Sioux Falls,-96.7311034,43.5445959
+US611,North,Great Plains,Sioux Falls,-96.7311034,43.5445959
+US611M,North,Great Plains,Sioux Falls,-96.7311034,43.5445959
+US612,North,Great Plains,Sioux Falls,-96.7311034,43.5445959
+US612M,North,Great Plains,Sioux Falls,-96.7311034,43.5445959
+US630,South,Mid-Atlantic,Baltimore,-76.6121893,39.2903848
+US630M,South,Mid-Atlantic,Baltimore,-76.6121893,39.2903848
+US631,South,Mid-Atlantic,Baltimore,-76.6121893,39.2903848
+US631M,South,Mid-Atlantic,Baltimore,-76.6121893,39.2903848
+US640,North,Central,Columbus,-82.9987942,39.9611755
+US640M,North,Central,Columbus,-82.9987942,39.9611755
+US641,North,Central,Columbus,-82.9987942,39.9611755
+US641M,North,Central,Columbus,-82.9987942,39.9611755
+US642,North,Central,Columbus,-82.9987942,39.9611755
+US642M,North,Central,Columbus,-82.9987942,39.9611755
+US650,North,North Central,Milwaukee,-87.9064736,43.0389025
+US650M,North,North Central,Milwaukee,-87.9064736,43.0389025
+US651,North,North Central,Milwaukee,-87.9064736,43.0389025
+US651M,North,North Central,Milwaukee,-87.9064736,43.0389025
+US652,North,North Central,Milwaukee,-87.9064736,43.0389025
+US652M,North,North Central,Milwaukee,-87.9064736,43.0389025
+US653,North,North Central,Milwaukee,-87.9064736,43.0389025
+US653M,North,North Central,Milwaukee,-87.9064736,43.0389025
+US661,North,New York Metro,Manhattan,-96.5716694,39.1836082
+US661M,North,New York Metro,Manhattan,-96.5716694,39.1836082
+US662,North,New York Metro,Manhattan,-96.5716694,39.1836082
+US662M,North,New York Metro,Manhattan,-96.5716694,39.1836082
+US663,North,New York Metro,Manhattan,-96.5716694,39.1836082
+US663M,North,New York Metro,Manhattan,-96.5716694,39.1836082
+US670,North,New York Metro,New York City,-74.0059413,40.7127837
+US670M,North,New York Metro,New York City,-74.0059413,40.7127837
+US674,North,New York Metro,Warren New Jersey,-74.5004796,40.6342489
+US674M,North,New York Metro,Warren New Jersey,-74.5004796,40.6342489
+US675,North,New York Metro,New York City,-74.0059413,40.7127837
+US675M,North,New York Metro,New York City,-74.0059413,40.7127837
+US676,North,New York Metro,New York City,-74.0059413,40.7127837
+US676M,North,New York Metro,New York City,-74.0059413,40.7127837
+CA47,Canada,Western Canada,Vancouver,-122.6614861,45.6387281
+CA24,Canada,Eastern Canada,Montreal,-73.567256,45.5016889
+CA23,Canada,Eastern Canada,Montreal,-73.567256,45.5016889
