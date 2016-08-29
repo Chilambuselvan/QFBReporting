@@ -7,7 +7,6 @@
 # please Contact e.chilambuselvan@kone.com / +919600093567
 #
 
-
 library(shiny)
 library(leaflet)
 library(plotly)
@@ -22,6 +21,7 @@ library(lubridate)
 
 myvar=0
 if (myvar==1){
+#"C:/Official/QFBReporting/Data" 
   setwd("F:/Official/TReporting/QFbReporting/QFBReporting/Data")
   COR_EFRMaster=fread("DataNeeded.csv", stringsAsFactors = FALSE, header= TRUE)
   ENAMasterSource=fread("SOASource.csv", stringsAsFactors = FALSE, header= TRUE)
