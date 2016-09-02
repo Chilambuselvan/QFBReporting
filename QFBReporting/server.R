@@ -274,8 +274,8 @@ shinyServer(function(input, output) {
   output$TotCostPlot<-renderPlotly({
     plot_ly(x = ENAmaster2015_GroupbyCauseCode$Cause_code ,y = ENAmaster2015_GroupbyCauseCode$cnt,name ="2015",type="bar")%>%
     add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2016_GroupbyCauseCode$cnt,name="2016", type="bar") %>%
-      add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2016_GroupbyCauseCode$cnt,text=paste0(round(ENAmaster2016_GroupbyCauseCode$cnt,0),"USD") ,mode="text",textposition = "top",showlegend=FALSE,hoverinfo="none") %>%
-      add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2015_GroupbyCauseCode$cnt,text=paste0(round(ENAmaster2015_GroupbyCauseCode$cnt,0),"USD"), mode="text",textposition = "top",showlegend=FALSE,hoverinfo="none") %>%
+      add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2016_GroupbyCauseCode$cnt,text=paste0(round(ENAmaster2016_GroupbyCauseCode$cnt,0),"USD") ,mode="text",textposition = "top right",showlegend=FALSE,hoverinfo="none") %>%
+      add_trace(x = ENAmaster2015_GroupbyCauseCode$Cause_code, y=ENAmaster2015_GroupbyCauseCode$cnt,text=paste0(round(ENAmaster2015_GroupbyCauseCode$cnt,0),"USD"), mode="text",textposition = "top left",showlegend=FALSE,hoverinfo="none") %>%
       layout(xaxis=list(title = "Cause Code", titlefont = f),yaxis=list(title = "Total Cost in USD", titlefont = f))%>%
       layout(title="Category 2 TotalCost VS Cause code")
     #rm(subdf)
