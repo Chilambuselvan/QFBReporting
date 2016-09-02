@@ -145,17 +145,11 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                              )
                         ),
                     tabPanel(title = "Quality Improvement Area",
-                             
                              fluidRow(
-                               #column(2,"Saml"),
-                               column(12,
-                                      fluidRow(plotlyOutput("TotCostPlot"))
-                                      
-                               )
-                               # column(12,
-                               #        fluidRow(plotlyOutput("RMALineChartDistrict"))
-                               
-                               #)
+                               column(10,fluidRow(plotlyOutput("TotCostPlot")))
+                              ),
+                             fluidRow(
+                              column(10,fluidRow(plotlyOutput("CostPlotVsCausecode")))
                              )
                              
                     )

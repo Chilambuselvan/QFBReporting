@@ -272,8 +272,27 @@ shinyServer(function(input, output) {
   })
   ####################################### Improvement charts ####################################
   output$TotCostPlot<-renderPlotly({
+    
+    TotCosPlot2015=subdf2015 %>%
+      group_by(CreatedMonth) %>%
+      #filter(District== input$ChooseDistrict)%>%
+      summarise(TotCos=sum(TotalCosts))
+    TotCosPlot2016=subdf2016 %>%
+      group_by(CreatedMonth) %>%
+      #filter(District== input$ChooseDistrict)%>%
+      summarise(TotCos=sum(TotalCosts))
+    plot_ly(x = TotCosPlot2015$CreatedMonth ,y = TotCosPlot2015$TotCos,name ="2015",line = list(shape = "spline"))%>%
+    add_trace(x = TotCosPlot2016$CreatedMonth, y=TotCosPlot2016$TotCos,name="2016", line = list(shape = "spline")) %>%
+      add_trace(x = TotCosPlot2016$CreatedMonth, y=TotCosPlot2016$TotCos,text=paste0(round(TotCosPlot2016$TotCos,0),"USD") ,mode="text",textposition = "top right",showlegend=FALSE,hoverinfo="none") %>%
+      add_trace(x = TotCosPlot2015$CreatedMonth, y=TotCosPlot2015$TotCos,text=paste0(round(TotCosPlot2015$TotCos,0),"USD"), mode="text",textposition = "top left",showlegend=FALSE,hoverinfo="none") %>%
+      layout(xaxis=x,yaxis=list(title = "Total Cost in USD", titlefont = f))%>%
+      layout(title="Total Cost of Cat2 Feedback Month wise")
+    #rm(subdf)
+  })
+  
+  output$CostPlotVsCausecode<-renderPlotly({
     plot_ly(x = ENAmaster2015_GroupbyCauseCode$Cause_code ,y = ENAmaster2015_GroupbyCauseCode$cnt,name ="2015",type="bar")%>%
-    add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2016_GroupbyCauseCode$cnt,name="2016", type="bar") %>%
+      add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2016_GroupbyCauseCode$cnt,name="2016", type="bar") %>%
       add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2016_GroupbyCauseCode$cnt,text=paste0(round(ENAmaster2016_GroupbyCauseCode$cnt,0),"USD") ,mode="text",textposition = "top right",showlegend=FALSE,hoverinfo="none") %>%
       add_trace(x = ENAmaster2015_GroupbyCauseCode$Cause_code, y=ENAmaster2015_GroupbyCauseCode$cnt,text=paste0(round(ENAmaster2015_GroupbyCauseCode$cnt,0),"USD"), mode="text",textposition = "top left",showlegend=FALSE,hoverinfo="none") %>%
       layout(xaxis=list(title = "Cause Code", titlefont = f),yaxis=list(title = "Total Cost in USD", titlefont = f))%>%
