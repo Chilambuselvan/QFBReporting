@@ -150,6 +150,15 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                               ),
                              fluidRow(
                               column(10,fluidRow(plotlyOutput("CostPlotVsCausecode")))
+                             ),
+                             fluidRow(
+                               fluidRow(
+                                 column(3,selectInput(inputId = "yearChoosePareto","Choose Year",YearSel,multiple = FALSE))
+                               ),
+                               fluidRow(
+                                 column(10,fluidRow(plotlyOutput("TopTenClaims")))
+                                      )
+                               
                              )
                              
                     )

@@ -272,17 +272,18 @@ shinyServer(function(input, output) {
   })
   ####################################### Improvement charts ####################################
   output$TotCostPlot<-renderPlotly({
-    
     TotCosPlot2015=subdf2015 %>%
       group_by(CreatedMonth) %>%
       #filter(District== input$ChooseDistrict)%>%
+      filter(substr(FB_Responsibility, 1, 3)=="Fro") %>%
       summarise(TotCos=sum(TotalCosts))
     TotCosPlot2016=subdf2016 %>%
       group_by(CreatedMonth) %>%
+      filter(substr(FB_Responsibility, 1, 3)=="Fro") %>%
       #filter(District== input$ChooseDistrict)%>%
       summarise(TotCos=sum(TotalCosts))
     plot_ly(x = TotCosPlot2015$CreatedMonth ,y = TotCosPlot2015$TotCos,name ="2015",line = list(shape = "spline"))%>%
-    add_trace(x = TotCosPlot2016$CreatedMonth, y=TotCosPlot2016$TotCos,name="2016", line = list(shape = "spline")) %>%
+    add_trace(x = TotCosPlot2016$CreatedMonth, y=TotCosPlot2016$TotCos,name="2016", type="bar") %>%
       add_trace(x = TotCosPlot2016$CreatedMonth, y=TotCosPlot2016$TotCos,text=paste0(round(TotCosPlot2016$TotCos,0),"USD") ,mode="text",textposition = "top right",showlegend=FALSE,hoverinfo="none") %>%
       add_trace(x = TotCosPlot2015$CreatedMonth, y=TotCosPlot2015$TotCos,text=paste0(round(TotCosPlot2015$TotCos,0),"USD"), mode="text",textposition = "top left",showlegend=FALSE,hoverinfo="none") %>%
       layout(xaxis=x,yaxis=list(title = "Total Cost in USD", titlefont = f))%>%
@@ -298,5 +299,43 @@ shinyServer(function(input, output) {
       layout(xaxis=list(title = "Cause Code", titlefont = f),yaxis=list(title = "Total Cost in USD", titlefont = f))%>%
       layout(title="Category 2 TotalCost VS Cause code")
     #rm(subdf)
+  })
+  
+  output$TopTenClaims<-renderPlotly({
+    Top10CosPlot2015=subdf2015 %>%
+      group_by(KONE_SO_code) %>%
+      #filter(District== input$ChooseDistrict)%>%
+      filter(substr(FB_Responsibility, 1, 3)=="Fro") %>%
+      summarise(TotCos=sum(TotalCosts))%>%
+      top_n(10,TotCos)%>%
+      arrange(desc(TotCos))
+    Top10CosPlot2016=subdf2016 %>%
+      group_by(KONE_SO_code) %>%
+      filter(substr(FB_Responsibility, 1, 3)=="Fro") %>%
+      #filter(District== input$ChooseDistrict)%>%
+      summarise(TotCos=sum(TotalCosts))%>%
+      top_n(10,TotCos)%>%
+      arrange(desc(TotCos))
+    
+    if (input$yearChoosePareto==2016)
+    {
+      plot_ly(x = Top10CosPlot2016$KONE_SO_code, y=Top10CosPlot2016$TotCos,name="2016", type="bar") %>%
+        add_trace(x = Top10CosPlot2016$KONE_SO_code, y=cumsum(Top10CosPlot2016$TotCos),name="2016",line = list(shape = "spline")) %>%
+        #add_trace(x = Top10CosPlot2016$KONE_SO_code, y=Top10CosPlot2016$TotCos,text=paste0(round(Top10CosPlot2016$TotCos,0),"USD") ,mode="text",textposition = "top right",showlegend=FALSE,hoverinfo="none") %>%
+        #add_trace(x = Top10CosPlot2015$KONE_SO_code, y=Top10CosPlot2015$TotCos,text=paste0(round(Top10CosPlot2015$TotCos,0),"USD"), mode="text",textposition = "top left",showlegend=FALSE,hoverinfo="none") %>%
+        layout(xaxis=list(title = "KONE SO Code", titlefont = f),yaxis=list(title = "Total Cost in USD", titlefont = f))%>%
+        layout(title="2016 Category 2 TotalCost VS KONE SO Code")
+      #rm(subdf)
+    }
+    else
+    {
+      plot_ly(x = Top10CosPlot2015$KONE_SO_code ,y = Top10CosPlot2015$TotCos,name ="2015",type="bar")%>%
+        add_trace(x = Top10CosPlot2015$KONE_SO_code ,y = cumsum(Top10CosPlot2015$TotCos),name ="2015",line = list(shape = "spline"))%>%
+        #add_trace(x = Top10CosPlot2016$KONE_SO_code, y=Top10CosPlot2016$TotCos,text=paste0(round(Top10CosPlot2016$TotCos,0),"USD") ,mode="text",textposition = "top right",showlegend=FALSE,hoverinfo="none") %>%
+        #add_trace(x = Top10CosPlot2015$KONE_SO_code, y=Top10CosPlot2015$TotCos,text=paste0(round(Top10CosPlot2015$TotCos,0),"USD"), mode="text",textposition = "top left",showlegend=FALSE,hoverinfo="none") %>%
+        layout(xaxis=list(title = "KONE SO Code", titlefont = f),yaxis=list(title = "Total Cost in USD", titlefont = f))%>%
+        layout(title="2015 Category 2 TotalCost VS KONE SO Code")
+      #rm(subdf)Top10CosPlot2015
+    }
   })
 })
