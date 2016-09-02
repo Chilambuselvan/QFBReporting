@@ -32,6 +32,9 @@ shinyServer(function(input, output) {
   ENAmaster2015_GroupbyCat= subdf2015%>%group_by(Category)%>%summarise(cnt=n())
   ENAmaster2016_GroupbyCat= subdf2016%>%group_by(Category)%>%summarise(cnt=n())
   
+  ENAmaster2015_GroupbyDef= subdf2015%>%group_by(Defect_type_group)%>%summarise(cnt=n())
+  ENAmaster2016_GroupbyDef= subdf2016%>%group_by(Defect_type_group)%>%summarise(cnt=n())
+  
   CountYr_ConSLFL= ENAMasterSource %>% group_by(Created_on_year, ConvertedSLtoFL) %>% tally()
   ENAmaster2015_GroupbyCat=rbind(ENAmaster2015_GroupbyCat,c("ConvertedSLtoFL",subset(CountYr_ConSLFL, Created_on_year==2015 & ConvertedSLtoFL == 1)$n))
   ENAmaster2016_GroupbyCat=rbind(ENAmaster2016_GroupbyCat,c("ConvertedSLtoFL",subset(CountYr_ConSLFL, Created_on_year==2016 & ConvertedSLtoFL == 1)$n))
@@ -42,13 +45,19 @@ shinyServer(function(input, output) {
   
   ENAmastr15_GbyDisFbyC2= subdf2015 %>%filter(substr(FB_Responsibility, 1, 3)=="Fro") %>% group_by(District,CreatedMonth,Region) %>% tally()
   ENAmastr16_GbyDisFbyC2= subdf2016 %>%filter(substr(FB_Responsibility, 1, 3)=="Fro") %>% group_by(District,CreatedMonth,Region) %>% tally()
-  
+  ################################################# Category view #################################### 
   output$Categorychart<-renderPlotly({
-    
     plot_ly(x = ENAmaster2015_GroupbyCat$Category ,y = ENAmaster2015_GroupbyCat$cnt,name ="2015 Feedbacks",type="bar")
     add_trace(x = ENAmaster2016_GroupbyCat$Category, y=ENAmaster2016_GroupbyCat$cnt,name="2016 Feedbacks", type="bar") %>%
       layout(xaxis=x1,yaxis=list(title = "Quantity", titlefont = f))%>%
       layout(title="Feedback Comparison")
+    #rm(subdf)
+  })
+  output$CategorychartCat2<-renderPlotly({
+    plot_ly(x = ENAmaster2015_GroupbyDef$Defect_type_group ,y = ENAmaster2015_GroupbyDef$cnt,name ="2015 Feedbacks",type="bar")
+    add_trace(x = ENAmaster2016_GroupbyDef$Defect_type_group, y=ENAmaster2016_GroupbyDef$cnt,name="2016 Feedbacks", type="bar") %>%
+      layout(yaxis=list(title = "Quantity", titlefont = f))%>%
+      layout(title="Category 2 Feedbacks VS Defect type")
     #rm(subdf)
   })
   

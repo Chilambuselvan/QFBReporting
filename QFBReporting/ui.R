@@ -22,7 +22,8 @@ library(lubridate)
 myvar=0
 if (myvar==1){
 #"C:/Official/QFBReporting/Data" 
-  setwd("F:/Official/TReporting/QFbReporting/QFBReporting/Data")
+#F:/Official/TReporting/QFbReporting/QFBReporting/Data
+  setwd("D:/Official/09_Analytics/QualityDashBoard/QFBReporting/Data")
   COR_EFRMaster=fread("DataNeeded.csv", stringsAsFactors = FALSE, header= TRUE)
   ENAMasterSource=fread("SOASource.csv", stringsAsFactors = FALSE, header= TRUE)
   ENAMasterSource$Created_on <- as.Date(ENAMasterSource$Created_on, "%d.%m.%Y")
@@ -62,7 +63,12 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                              
                     ),
                     tabPanel(title = "Category View",
-                             plotlyOutput("Categorychart",width = 600)
+                             fluidRow(
+                               column(6,plotlyOutput("Categorychart",width = 600)),
+                               column(6,plotlyOutput("CategorychartCat2",width = 600)
+                               )
+                             )
+                             
                     ),
                     tabPanel(title = "Dashboard Chart",
                              fluidRow(
@@ -136,6 +142,21 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                               # column(12,
                               #        fluidRow(plotlyOutput("RMALineChartDistrict"))
                                       
+                               #)
+                             )
+                             
+                    ),
+                    tabPanel(title = "Quality Improvement Area",
+                             
+                             fluidRow(
+                               #column(2,"Saml"),
+                               column(12,
+                                      fluidRow(plotlyOutput("ImprovemenArea"))
+                                      
+                               )
+                               # column(12,
+                               #        fluidRow(plotlyOutput("RMALineChartDistrict"))
+                               
                                #)
                              )
                              
