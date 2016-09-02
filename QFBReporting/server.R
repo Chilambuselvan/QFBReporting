@@ -45,7 +45,11 @@ shinyServer(function(input, output) {
   
   ENAmastr15_GbyDisFbyC2= subdf2015 %>%filter(substr(FB_Responsibility, 1, 3)=="Fro") %>% group_by(District,CreatedMonth,Region) %>% tally()
   ENAmastr16_GbyDisFbyC2= subdf2016 %>%filter(substr(FB_Responsibility, 1, 3)=="Fro") %>% group_by(District,CreatedMonth,Region) %>% tally()
-  ################################################# Category view #################################### 
+ 
+  ENAmaster2015_GroupbyCauseCode= subdf2015%>%filter(substr(FB_Responsibility, 1, 3)=="Fro")%>%group_by(Cause_code)%>%summarise(cnt=sum(TotalCosts))
+  ENAmaster2016_GroupbyCauseCode= subdf2016%>%filter(substr(FB_Responsibility, 1, 3)=="Fro")%>%group_by(Cause_code)%>%summarise(cnt=sum(TotalCosts))
+  
+   ################################################# Category view #################################### 
   output$Categorychart<-renderPlotly({
     plot_ly(x = ENAmaster2015_GroupbyCat$Category ,y = ENAmaster2015_GroupbyCat$cnt,name ="2015 Feedbacks",type="bar")
     add_trace(x = ENAmaster2016_GroupbyCat$Category, y=ENAmaster2016_GroupbyCat$cnt,name="2016 Feedbacks", type="bar") %>%
@@ -60,7 +64,6 @@ shinyServer(function(input, output) {
       layout(title="Category 2 Feedbacks VS Defect type")
     #rm(subdf)
   })
-  
   ################################################# EFR charts ####################################
   output$DashRegionChart=renderPlotly({
     WestDF= COR_EFRMaster %>%
@@ -267,5 +270,14 @@ shinyServer(function(input, output) {
       layout(title="RMA Claims success percentage")
 
   })
-   
+  ####################################### Improvement charts ####################################
+  output$TotCostPlot<-renderPlotly({
+    plot_ly(x = ENAmaster2015_GroupbyCauseCode$Cause_code ,y = ENAmaster2015_GroupbyCauseCode$cnt,name ="2015",type="bar")%>%
+    add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2016_GroupbyCauseCode$cnt,name="2016", type="bar") %>%
+      add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2016_GroupbyCauseCode$cnt,text=paste0(round(ENAmaster2016_GroupbyCauseCode$cnt,0),"USD") ,mode="text",textposition = "top",showlegend=FALSE,hoverinfo="none") %>%
+      add_trace(x = ENAmaster2016_GroupbyCauseCode$Cause_code, y=ENAmaster2015_GroupbyCauseCode$cnt,text=paste0(round(ENAmaster2015_GroupbyCauseCode$cnt,0),"USD"), mode="text",textposition = "top",showlegend=FALSE,hoverinfo="none") %>%
+      layout(yaxis=list(title = "Total Cost in USD", titlefont = f))%>%
+      layout(title="Category 2 TotalCost VS Cause code")
+    #rm(subdf)
+  })
 })
