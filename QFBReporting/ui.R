@@ -3,7 +3,7 @@
 # run the application by clicking 'Run App' above.
 #
 # Find out more about building applications with Shiny here:
-# 
+#
 # please Contact e.chilambuselvan@kone.com / +919600093567
 #
 
@@ -16,14 +16,19 @@ library(data.table)
 library(googleVis)
 library(ggmap)
 library(lubridate)
+library(XLConnect)
 
 #devtools::install_github("rstudio/addinexamples", type = "source")
 
 myvar=0
 if (myvar==1){
-#"C:/Official/QFBReporting/Data" 
+#"C:/Official/QFBReporting/Data"
 #F:/Official/TReporting/QFbReporting/QFBReporting/Data
-  setwd("D:/Official/09_Analytics/QualityDashBoard/QFBReporting/Data")
+  setwd("F:/Official/TReporting/QFbReporting/QFBReporting/Data")
+  wb = loadWorkbook("EFR Del.xls")
+  EFRDel = readWorksheet(wb, sheet = 1, header = TRUE)
+  wb= loadWorkbook("EFR Feedback.xls")
+  EFRFeedback = readWorksheet(wb, sheet = 1, header = TRUE)
   COR_EFRMaster=fread("DataNeeded.csv", stringsAsFactors = FALSE, header= TRUE)
   ENAMasterSource=fread("SOASource.csv", stringsAsFactors = FALSE, header= TRUE)
   ENAMasterSource$Created_on <- as.Date(ENAMasterSource$Created_on, "%d.%m.%Y")
@@ -57,11 +62,10 @@ MonSel = month.abb[unique(ENAMasterSource$CreatedMonth)]
 #match("Jan",month.abb)
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(title = "Quality Dashboard",
-                  
+
                   tabsetPanel(
                     tabPanel(title = "Index Page"
-                             
-                    ),
+                             ),
                     tabPanel(title = "Category View",
                              fluidRow(
                                column(6,plotlyOutput("Categorychart",width = 600)),
@@ -75,7 +79,6 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                                column(3,selectInput(inputId = "ColSelection","Choose Columns",VarCol,multiple = TRUE))
                              ),
                              fluidRow(
-                               #column(2,"Saml"),
                                column(6,
                                       fluidRow(plotlyOutput("DashRegionChart")),
                                       fluidRow(plotlyOutput("DashCOR90Chart"))
@@ -90,7 +93,7 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                              dataTableOutput("mytable")
                     ),
                     tabPanel(title = "Map Interactive",
-                             
+
                              fluidRow(
                                column(2),
                                column(3,selectInput(inputId = "CategoryChoose","Choose Category",CatSel,multiple = FALSE))
@@ -111,7 +114,7 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                     ),
                     tabPanel(title = "Branch Locations",
                              leafletOutput("mapKONEQFB_Branch")
-                             
+
                     ),
                     tabPanel(title = "Canada Report",
                              fluidRow(
@@ -124,25 +127,20 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                                       fluidRow(plotlyOutput("LineChartWestCanada"))
                                )
                              )
-                             
+
                     ),
                     tabPanel(title = "RMA Report",
                              fluidRow(
                                 column(3,selectInput(inputId = "ChooseDistrict","Choose District",RegionSel,multiple = FALSE))
                                 #column(3,selectInput(inputId = "MonthChooseCanReport","Choose Month",MonSel,multiple = FALSE))
-                             
+
                              ),
                              fluidRow(
                                #column(2,"Saml"),
                                column(12,
                                       fluidRow(plotlyOutput("RMALineChartRegion"))
-                                      
-                               )
-                              # column(12,
-                              #        fluidRow(plotlyOutput("RMALineChartDistrict"))
-                                      
-                               #)
-                             )
+                                )
+                            )
                         ),
                     tabPanel(title = "Quality Improvement Area",
                              fluidRow(
@@ -157,13 +155,24 @@ shinyUI(fluidPage(title = "Quality Dashboard",
                                ),
                                fluidRow(
                                  column(10,fluidRow(plotlyOutput("TopTenClaims")))
+                                      ),
+                               fluidRow(
+                                 column(1),
+                                 column(6,fluidRow(
+                                   dataTableOutput("tableTopTenClaims")
+                                   ))
+                                ))
+                            ),
+                    tabPanel(title = "NEVEDA Chart",
+                             fluidRow(
+                               column(3,selectInput(inputId = "nevChooseDistrict","Choose District",RegionSel,multiple = FALSE))
+                                     ),
+                             fluidRow(
+                                column(12,
+                                      fluidRow(plotlyOutput("NevedaChart"))
                                       )
-                               
-                             )
-                             
-                    )
-                    
-                  )
-  
+                                      )
+                            )
+        )
 
 ))
