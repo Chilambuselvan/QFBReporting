@@ -17,6 +17,7 @@ library(googleVis)
 library(ggmap)
 library(lubridate)
 library(XLConnect)
+library(tidyr)
 
 #devtools::install_github("rstudio/addinexamples", type = "source")
 
@@ -25,10 +26,7 @@ if (myvar==1){
 #"C:/Official/QFBReporting/Data"
 #F:/Official/TReporting/QFbReporting/QFBReporting/Data
   setwd("F:/Official/TReporting/QFbReporting/QFBReporting/Data")
-  wb = loadWorkbook("EFR Del.xls")
-  EFRDel = readWorksheet(wb, sheet = 1, header = TRUE)
-  wb= loadWorkbook("EFR Feedback.xls")
-  EFRFeedback = readWorksheet(wb, sheet = 1, header = TRUE)
+
   COR_EFRMaster=fread("DataNeeded.csv", stringsAsFactors = FALSE, header= TRUE)
   ENAMasterSource=fread("SOASource.csv", stringsAsFactors = FALSE, header= TRUE)
   ENAMasterSource$Created_on <- as.Date(ENAMasterSource$Created_on, "%d.%m.%Y")
@@ -42,23 +40,30 @@ if (myvar==1){
   RMASearchstr <- c("NOT", "EXPIRED")
   RMASearchstr<-as.data.frame(t(RMASearchstr))
   ENAMasterSource$RMAReceived=as.integer(grepl(paste(RMASearchstr, collapse = "|"), ENAMasterSource$`Ret_Del'y_Nr`))
+  #wb = loadWorkbook("EFR Del.xls")
+  #EFRDel = readWorksheet(wb, sheet = 1, header = TRUE)
+  ENAMasterSource$Orig._shipping_month=substr(ENAMasterSource$Orig._shipping_month,6,7)
+  #EFRDel=left_join(EFRDel,BranchMapping,by=c("A_SalesOffice"="Branch"))
+  wb= loadWorkbook("EFR Feedback.xls")
+  EFRFeedback = readWorksheet(wb, sheet = 1, header = TRUE)
+   f <- list(family = "Courier New, monospace",size = 18,color = "#7f7f7f")
+  x <- list(title = "Month",titlefont = f,tickmode = "array",tickvals = 1:12,
+            ticktext = c("Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"))
+  x1 <- list(title = "Category",titlefont = f,tickmode = "array",
+             tickvals =c("Cat1 Material Request SL responsibility","Cat2 Material Request FL responsibility","Cat3 Improvement proposal (No Mat Req)","ConvertedSLtoFL","ConvertedFLtoSL"),
+             ticktext = c("Cat1","Cat2","Cat3","SL to FL","FL to SL"))
+  vars=unique(COR_EFRMaster$Branches)
+  varsYN = c(TRUE,FALSE)
+  VarCol = colnames(COR_EFRMaster)
+  CatSel= unique(ENAMasterSource$FB_Responsibility)
+  YearSel = unique(ENAMasterSource$Created_on_year)
+  RegionSel=unique(ENAMasterSource$District)
+  MonSel = month.abb[unique(ENAMasterSource$CreatedMonth)]
 }
 
 #filteredData = subset(COR_EFRMaster,COR_EFRMaster$Branches=="Las Vegas")
 
-f <- list(family = "Courier New, monospace",size = 18,color = "#7f7f7f")
-x <- list(title = "Month",titlefont = f,tickmode = "array",tickvals = 1:12,
-          ticktext = c("Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"))
-x1 <- list(title = "Category",titlefont = f,tickmode = "array",
-           tickvals =c("Cat1 Material Request SL responsibility","Cat2 Material Request FL responsibility","Cat3 Improvement proposal (No Mat Req)","ConvertedSLtoFL","ConvertedFLtoSL"),
-           ticktext = c("Cat1","Cat2","Cat3","SL to FL","FL to SL"))
-vars=unique(COR_EFRMaster$Branches)
-varsYN = c(TRUE,FALSE)
-VarCol = colnames(COR_EFRMaster)
-CatSel= unique(ENAMasterSource$FB_Responsibility)
-YearSel = unique(ENAMasterSource$Created_on_year)
-RegionSel=unique(ENAMasterSource$District)
-MonSel = month.abb[unique(ENAMasterSource$CreatedMonth)]
+
 #match("Jan",month.abb)
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(title = "Quality Dashboard",

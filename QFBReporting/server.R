@@ -8,13 +8,39 @@
 #install.packages("ggThemeAssist")
 # install.packages('addinslist')
 library(shiny)
+subdf2015=subset(ENAMasterSource,Created_on_year==2015)
+subdf2016=subset(ENAMasterSource,Created_on_year==2016)
+
+ENAmaster2015_GroupbyCat= subdf2015%>%group_by(Category)%>%summarise(cnt=n())
+ENAmaster2016_GroupbyCat= subdf2016%>%group_by(Category)%>%summarise(cnt=n())
+
+ENAmaster2015_GroupbyDef= subdf2015%>%group_by(Defect_type_group)%>%summarise(cnt=n())
+ENAmaster2016_GroupbyDef= subdf2016%>%group_by(Defect_type_group)%>%summarise(cnt=n())
+
+CountYr_ConSLFL= ENAMasterSource %>% group_by(Created_on_year, ConvertedSLtoFL) %>% tally()
+ENAmaster2015_GroupbyCat=rbind(ENAmaster2015_GroupbyCat,c("ConvertedSLtoFL",subset(CountYr_ConSLFL, Created_on_year==2015 & ConvertedSLtoFL == 1)$n))
+ENAmaster2016_GroupbyCat=rbind(ENAmaster2016_GroupbyCat,c("ConvertedSLtoFL",subset(CountYr_ConSLFL, Created_on_year==2016 & ConvertedSLtoFL == 1)$n))
+
+CountYr_ConFLSL= ENAMasterSource %>% group_by(Created_on_year, ConvertedFLtoSL) %>% tally()
+ENAmaster2015_GroupbyCat=rbind(ENAmaster2015_GroupbyCat,c("ConvertedFLtoSL",subset(CountYr_ConFLSL, Created_on_year==2015 & ConvertedFLtoSL == 1)$n))
+ENAmaster2016_GroupbyCat=rbind(ENAmaster2016_GroupbyCat,c("ConvertedFLtoSL",subset(CountYr_ConFLSL, Created_on_year==2016 & ConvertedFLtoSL == 1)$n))
+
+ENAmastr15_GbyDisFbyC2= subdf2015 %>%filter(substr(FB_Responsibility, 1, 3)=="Fro") %>% group_by(District,CreatedMonth,Region) %>% tally()
+ENAmastr16_GbyDisFbyC2= subdf2016 %>%filter(substr(FB_Responsibility, 1, 3)=="Fro") %>% group_by(District,CreatedMonth,Region) %>% tally()
+
+ENAmaster2015_GroupbyCauseCode= subdf2015%>%filter(substr(FB_Responsibility, 1, 3)=="Fro")%>%group_by(Cause_code)%>%summarise(cnt=sum(TotalCosts))
+ENAmaster2016_GroupbyCauseCode= subdf2016%>%filter(substr(FB_Responsibility, 1, 3)=="Fro")%>%group_by(Cause_code)%>%summarise(cnt=sum(TotalCosts))
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
 
   brachSelection= reactive({input$Chars})
   LegendYesNO = reactive({input$OptLegend})
-  ColSel = reactive({input$ColSelection}) %>%
+  ColSel = reactive({input$ColSelection})
+  reactCat=reactive({input$CategoryChoose})
+  reactYearChoose=reactive({input$yearChoose})
+  reactChooseDis=reactive({input$ChooseDistrict})
+  reactyearPareto=reactive({input$yearChoosePareto})
   ################################################# Preparing Geo Code fetching####################################
 
   ###### Binding Branch & disctrict based on Branchcode OrigOffice
@@ -25,27 +51,6 @@ shinyServer(function(input, output) {
   #Dcountry <- data.frame(Dcountry[,1],geocodes,stringsAsFactors = FALSE)
   #write.csv(BranchMapping,file="BranchGeoCode.csv")
   ################################################# Category charts ####################################
-  subdf2015=subset(ENAMasterSource,Created_on_year==2015)
-  subdf2016=subset(ENAMasterSource,Created_on_year==2016)
-  ENAmaster2015_GroupbyCat= subdf2015%>%group_by(Category)%>%summarise(cnt=n())
-  ENAmaster2016_GroupbyCat= subdf2016%>%group_by(Category)%>%summarise(cnt=n())
-
-  ENAmaster2015_GroupbyDef= subdf2015%>%group_by(Defect_type_group)%>%summarise(cnt=n())
-  ENAmaster2016_GroupbyDef= subdf2016%>%group_by(Defect_type_group)%>%summarise(cnt=n())
-
-  CountYr_ConSLFL= ENAMasterSource %>% group_by(Created_on_year, ConvertedSLtoFL) %>% tally()
-  ENAmaster2015_GroupbyCat=rbind(ENAmaster2015_GroupbyCat,c("ConvertedSLtoFL",subset(CountYr_ConSLFL, Created_on_year==2015 & ConvertedSLtoFL == 1)$n))
-  ENAmaster2016_GroupbyCat=rbind(ENAmaster2016_GroupbyCat,c("ConvertedSLtoFL",subset(CountYr_ConSLFL, Created_on_year==2016 & ConvertedSLtoFL == 1)$n))
-
-  CountYr_ConFLSL= ENAMasterSource %>% group_by(Created_on_year, ConvertedFLtoSL) %>% tally()
-  ENAmaster2015_GroupbyCat=rbind(ENAmaster2015_GroupbyCat,c("ConvertedFLtoSL",subset(CountYr_ConFLSL, Created_on_year==2015 & ConvertedFLtoSL == 1)$n))
-  ENAmaster2016_GroupbyCat=rbind(ENAmaster2016_GroupbyCat,c("ConvertedFLtoSL",subset(CountYr_ConFLSL, Created_on_year==2016 & ConvertedFLtoSL == 1)$n))
-
-  ENAmastr15_GbyDisFbyC2= subdf2015 %>%filter(substr(FB_Responsibility, 1, 3)=="Fro") %>% group_by(District,CreatedMonth,Region) %>% tally()
-  ENAmastr16_GbyDisFbyC2= subdf2016 %>%filter(substr(FB_Responsibility, 1, 3)=="Fro") %>% group_by(District,CreatedMonth,Region) %>% tally()
-
-  ENAmaster2015_GroupbyCauseCode= subdf2015%>%filter(substr(FB_Responsibility, 1, 3)=="Fro")%>%group_by(Cause_code)%>%summarise(cnt=sum(TotalCosts))
-  ENAmaster2016_GroupbyCauseCode= subdf2016%>%filter(substr(FB_Responsibility, 1, 3)=="Fro")%>%group_by(Cause_code)%>%summarise(cnt=sum(TotalCosts))
 
    ################################################# Category view ####################################
   output$Categorychart<-renderPlotly({
@@ -154,7 +159,7 @@ shinyServer(function(input, output) {
   output$mapKONEQFB = renderLeaflet({
     #require(leaflet)
     ENAMasterSource_Sub=subset(ENAMasterSource,!is.na(BranchDesc))
-    ENAMasterSource_Sub=subset(ENAMasterSource_Sub,FB_Responsibility==input$CategoryChoose)
+    ENAMasterSource_Sub=subset(ENAMasterSource_Sub,FB_Responsibility==reactCat())
     m=leaflet(na.omit(ENAMasterSource_Sub)) %>% addTiles() %>%
       #setView(lng=mean(ENAMasterSource$lon),lat=mean(ENAMasterSource$lat), zoom=3)%>%
       addCircleMarkers(data = ENAMasterSource_Sub, lng = ~ lon, lat = ~ lat, radius = 5,clusterOptions = markerClusterOptions())
@@ -165,7 +170,7 @@ shinyServer(function(input, output) {
   ####################################### Other charts ####################################
 
   output$ScatRpt1<-renderPlotly({
-    subdf=subset(ENAMasterSource,Created_on_year==input$yearChoose)
+    subdf=subset(ENAMasterSource,Created_on_year==reactYearChoose())
     subdf_GroupbyMonth= subdf%>%group_by(CreatedMonth)%>%summarise(cnt=n())
     plot_ly(x = subdf_GroupbyMonth$CreatedMonth ,y = subdf_GroupbyMonth$cnt,name = "FeedbackQuantity",type = "bar")%>%
       layout(xaxis=x,yaxis=list(title = "Quantity", titlefont = f))
@@ -252,12 +257,12 @@ shinyServer(function(input, output) {
 
     Plot2015=subdf2015 %>%
       group_by(CreatedMonth) %>%
-      filter(District== input$ChooseDistrict)%>%
+      filter(District== reactChooseDis())%>%
       mutate(RMAPer = sum(RMAReceived)/sum(ReturnDelReq=="YES")) %>%
       summarise(RMAAvgPer=mean(RMAPer))
     Plot2016=subdf2016 %>%
       group_by(CreatedMonth) %>%
-      filter(District== input$ChooseDistrict)%>%
+      filter(District== reactChooseDis())%>%
       mutate(RMAPer = sum(RMAReceived)/sum(ReturnDelReq=="YES")) %>%
       summarise(RMAAvgPer=mean(RMAPer))
       plot_ly(x = Plot2015$CreatedMonth ,y = round(Plot2015$RMAAvgPer*100,2),name ="2015 Actual",line = list(shape = "spline")) %>%
@@ -289,13 +294,11 @@ shinyServer(function(input, output) {
   output$TotCostPlot<-renderPlotly({
     TotCosPlot2015=subdf2015 %>%
       group_by(CreatedMonth) %>%
-      #filter(District== input$ChooseDistrict)%>%
       filter(substr(FB_Responsibility, 1, 3)=="Fro") %>%
       summarise(TotCos=sum(TotalCosts))
     TotCosPlot2016=subdf2016 %>%
       group_by(CreatedMonth) %>%
       filter(substr(FB_Responsibility, 1, 3)=="Fro") %>%
-      #filter(District== input$ChooseDistrict)%>%
       summarise(TotCos=sum(TotalCosts))
     plot_ly(x = TotCosPlot2015$CreatedMonth ,y = TotCosPlot2015$TotCos,name ="2015",line = list(shape = "spline"))%>%
     add_trace(x = TotCosPlot2016$CreatedMonth, y=TotCosPlot2016$TotCos,name="2016", type="bar") %>%
@@ -315,7 +318,7 @@ shinyServer(function(input, output) {
     #rm(subdf)
   })
   output$TopTenClaims<-renderPlotly({
-    if (input$yearChoosePareto==2016)
+    if (reactyearPareto()==2016)
     {
       plot_ly(data=dataTop10CosPlot2016(),x = KONE_SO_code, y=TotCos,name="2016", type="bar") %>%
         add_trace(x = KONE_SO_code, y=cumsum(TotCos),name="2016",line = list(shape = "spline")) %>%
@@ -335,17 +338,21 @@ shinyServer(function(input, output) {
     }
   })
   output$tableTopTenClaims = renderDataTable({
-    if (input$yearChoosePareto==2016)
+    if (reactyearPareto()==2016)
     {
-      datatable(dataTop10CosPlot2016(),rownames = FALSE, colnames = c("KONE SO CODE","Total cost in USD($)"))
+      datatable(dataTop10CosPlot2016(),rownames = FALSE, colnames = c("KONE SO CODE","Total cost in USD($)"),class = 'cell-border stripe')
     }
     else
     {
-      datatable(dataTop10CosPlot2015(),rownames = FALSE, colnames = c("KONE SO CODE","Total cost in USD($)"))
+      datatable(dataTop10CosPlot2015(),rownames = FALSE, colnames = c("KONE SO CODE","Total cost in USD($)"),class = 'cell-border stripe')
     }
     #datatable(filteredData[,columns,drop=FALSE], filter="top",options = list(lengthChange = FALSE))
   })
   ####################################### Neveda charts ####################################
-
-
+  # ENAMasterSource%>%
+  #   filter(substr(FB_Responsibility, 1, 3)=="Fro") %>%
+  #   filter(as.numeric(Orig._shipping_year)>=2015) %>%
+  #   group_by(Orig._shipping_year,Orig._shipping_month,District) %>%
+  #   summarise(cnt=n_distinct(SL_Order))
+  # unique(ENAMasterSource$District)
   })
