@@ -68,7 +68,7 @@ if (myvar==1){
 # Define UI for application that draws a histogram
 shinyUI(
   dashboardPage(
-    dashboardHeader(title = "QFB Reporting"),
+    dashboardHeader(title = "ENA Reporting"),
     dashboardSidebar(
       sidebarMenu(
         menuItem("Category View", tabName = "CatView", icon = icon("dot-circle-o")),
