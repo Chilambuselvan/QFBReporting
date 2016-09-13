@@ -96,8 +96,8 @@ shinyUI(
 
         tabItem(tabName = "Dashboard",
                 fluidRow(
-                  column(3,selectInput(inputId = "Chars","Choose Branch",vars,multiple = FALSE)),
-                  column(3,selectInput(inputId = "ColSelection","Choose Columns",VarCol,multiple = TRUE))
+                  column(3,selectInput(inputId = "Chars","Choose Branch",vars,multiple = FALSE))
+                  #column(3,selectInput(inputId = "ColSelection","Choose Columns",VarCol,multiple = TRUE))
                 ),
                 fluidRow(
                   column(6,
