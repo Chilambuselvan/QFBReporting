@@ -349,10 +349,9 @@ shinyServer(function(input, output) {
     #datatable(filteredData[,columns,drop=FALSE], filter="top",options = list(lengthChange = FALSE))
   })
   ####################################### Neveda charts ####################################
-  # ENAMasterSource%>%
-  #   filter(substr(FB_Responsibility, 1, 3)=="Fro") %>%
-  #   filter(as.numeric(Orig._shipping_year)>=2015) %>%
-  #   group_by(Orig._shipping_year,Orig._shipping_month,District) %>%
-  #   summarise(cnt=n_distinct(SL_Order))
-  # unique(ENAMasterSource$District)
+  # df=EFRDel%>%
+  #   filter(as.numeric(DelYear)>=2015) %>%
+  #   group_by(DelYear,DelMonth,District) %>%
+  #   summarise(cnt=n_distinct(Unique.SL.Order))
+  # DelbyMonth=spread(df,DelMonth,cnt)
   })

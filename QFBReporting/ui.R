@@ -40,13 +40,16 @@ if (myvar==1){
   RMASearchstr <- c("NOT", "EXPIRED")
   RMASearchstr<-as.data.frame(t(RMASearchstr))
   ENAMasterSource$RMAReceived=as.integer(grepl(paste(RMASearchstr, collapse = "|"), ENAMasterSource$`Ret_Del'y_Nr`))
-  #wb = loadWorkbook("EFR Del.xls")
-  #EFRDel = readWorksheet(wb, sheet = 1, header = TRUE)
+  wb = loadWorkbook("EFR Del.xls")
+  EFRDel = readWorksheet(wb, sheet = 1, header = TRUE)
   ENAMasterSource$Orig._shipping_month=substr(ENAMasterSource$Orig._shipping_month,6,7)
-  #EFRDel=left_join(EFRDel,BranchMapping,by=c("A_SalesOffice"="Branch"))
+  SalesOff_SOP=unique(ENAMasterSource[c("Sold-to_Party","OrigOffice")])
+  EFRDel=left_join(EFRDel,SalesOff_SOP,by=c("A_Customer"="Sold-to_Party"))
+  EFRDel=left_join(EFRDel,BranchMapping,by=c("OrigOffice"="Branch"))
   wb= loadWorkbook("EFR Feedback.xls")
   EFRFeedback = readWorksheet(wb, sheet = 1, header = TRUE)
-   f <- list(family = "Courier New, monospace",size = 18,color = "#7f7f7f")
+
+  f <- list(family = "Courier New, monospace",size = 18,color = "#7f7f7f")
   x <- list(title = "Month",titlefont = f,tickmode = "array",tickvals = 1:12,
             ticktext = c("Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"))
   x1 <- list(title = "Category",titlefont = f,tickmode = "array",
